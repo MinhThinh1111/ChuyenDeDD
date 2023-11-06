@@ -70,7 +70,7 @@ const HomeScreen = ({ route, navigation }: any) => {
                 IdHuyenfrom
                  
             await AsyncStorage.setItem('idHuyen',datahuyen);
-            const res = await fetch('http://192.168.1.2:3000/lotrinh/search/'+idToAdderss+'/'+idFromAdderss);
+            const res = await fetch('http://192.168.2.97:3000/lotrinh/search/'+idToAdderss+'/'+idFromAdderss);
             const data = await res.json();
             navigation.navigate('TripList',{idLoTrinh:data.Id,NgayDi:date,toAdderss:toAdderss,fromAdderss:fromAdderss})
             } catch (err) {

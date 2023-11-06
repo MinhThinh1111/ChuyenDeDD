@@ -11,7 +11,7 @@ const TripListScreens = ({ route }: any) => {
     let i = '2023-11-3'
     const getChuyenDiByIdLoTrinhNgayDi = async () => {
         try {
-            const res = await fetch('http://192.168.1.2:3000/chuyendi/search/' +idLoTrinh+ '/' + NgayDi);
+            const res = await fetch('http://192.168.2.97:3000/chuyendi/search/' +idLoTrinh+ '/' + NgayDi);
             const data = await res.json();
             setchuyenDi(data)
         } catch (err) {
@@ -49,11 +49,12 @@ const TripListScreens = ({ route }: any) => {
             </View>
 
             <View style={{ backgroundColor: '#DDDDDD', flex: 1, height: '100%', borderTopRightRadius: 20, top: -18, borderTopLeftRadius: 20 }}>
+                //Khi không có chuyến xe
                 {chuyenDi.length == 0 && <View>
-                    {/* <Text style={{ marginTop: 90, alignSelf: 'center', fontSize: 24, color: 'black', fontWeight: 'bold' }}>Không tìm thấy chuyến xe </Text>
+                    <Text style={{ marginTop: 90, alignSelf: 'center', fontSize: 24, color: 'black', fontWeight: 'bold' }}>Không tìm thấy chuyến xe </Text>
                     <Text style={{ alignSelf: 'center', fontSize: 16, color: 'black', }}>các chuyến xe trong ngày tạm hết vé.</Text>
                     <Text style={{ alignSelf: 'center', fontSize: 16, color: 'black', }}>quý khách vui lòng thử lại sau hoặc chọn </Text>
-                    <Text style={{ alignSelf: 'center', fontSize: 16, color: 'black', }}>ngày khởi hành khác</Text> */}
+                    <Text style={{ alignSelf: 'center', fontSize: 16, color: 'black', }}>ngày khởi hành khác</Text>
                     <Waiting></Waiting>
                 </View>}
 

@@ -17,7 +17,7 @@ const LoginPhoneScreen = () => {
         if (regexPhone.test(isPhone)) {
        
             
-            const res = await fetch('http://192.168.1.2:3000/hanhkhach/searchSDT/' + isPhone);
+            const res = await fetch('http://192.168.2.97:3000/hanhkhach/searchSDT/' + isPhone);
             const data = await res.json();
 
             if (data.length > 0) {
@@ -61,7 +61,9 @@ const LoginPhoneScreen = () => {
                         )
                     }
                     <TouchableOpacity onPress={() => login()} style={{ width: '100%', backgroundColor: '#FF6600', borderRadius: 15, marginTop: 35 }}><Text style={{ alignSelf: 'center', padding: 15, fontSize: 16, color: 'white' }}>Tiếp tục</Text></TouchableOpacity>
+                
                 </View>
+                
             </View>
         </>
     )
