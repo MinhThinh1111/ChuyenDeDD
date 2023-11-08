@@ -37,7 +37,7 @@ const MyTripScreen = ({ route, navigation }: any) => {
         <>
             <StatusBar translucent={true} backgroundColor={'transparent'} barStyle="dark-content"></StatusBar>
             <View style={styles.header}>
-                <Text style={styles.txtHeader}>Chuyến của tôi</Text>
+                <Text style={styles.txtHeader}>Lịch sử mua vé</Text>
             </View>
             <View style={{ backgroundColor: '#FF6600' }}>
                 <View style={{ backgroundColor: 'white', height: '100%', borderRadius: 30, padding: 15 }}>

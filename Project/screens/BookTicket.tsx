@@ -115,7 +115,7 @@ const BookTicket = ({ route, navigation }: any) => {
                         SoGheTrong: response.data.SoGheTrong - data.length
                     }
                     axios.put('http://192.168.2.98:3000/chuyendi/updateSoGheTrong', updatechuyendi).then((response) => {    
-                        // axios.put('http://192.168.2.98:3000/chuyendi/updateSoGheTrong', updatechuyendi).then((response) => {
+                         //axios.put('http://192.168.2.98:3000/chuyendi/updateSoGheTrong', updatechuyendi).then((response) => {
                         Alert.alert('Thông báo', 'Đặt Vé Thành Công')
                         navigation.navigate('MyTric')
                     })
