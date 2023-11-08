@@ -8,22 +8,22 @@ const Ticketinformation = ({ route, navigation }: any) => {
    const { data, checkve } = route.params;
    const { IsNote, SetNote, getNote }: any = useNotes()
    const DeletVeXe = async () => {
-      axios.get('http://192.168.2.97:3000/chuyendi/' + data.Id_ChuyenDi).then((response) => {
+      axios.get('http://192.168.2.98:3000/chuyendi/' + data.Id_ChuyenDi).then((response) => {
          let updatechuyendi = {
             Id: data.Id_ChuyenDi,
             SoGheTrong: response.data.SoGheTrong + data.soghe
          }
-         axios.put('http://192.168.2.97:3000/chuyendi/updateSoGheTrong', updatechuyendi).then((response) => {  
+         axios.put('http://192.168.2.98:3000/chuyendi/updateSoGheTrong', updatechuyendi).then((response) => {  
             let updatevexe = {
                Id: data.Id,
                TrangThai: 3,
             }        
-            axios.put('http://192.168.2.97:3000/vexe/IdVeXe',updatevexe).then((response) => { 
+            axios.put('http://192.168.2.98:3000/vexe/IdVeXe',updatevexe).then((response) => { 
                let updateChongoi = {
                   TrangThai: 3,
                   Id_VeXe : data.Id,
                }
-               axios.put('http://192.168.2.97:3000/chongoi/updateIdVeXe',updateChongoi).then((response) => { 
+               axios.put('http://192.168.2.98:3000/chongoi/updateIdVeXe',updateChongoi).then((response) => { 
                   Alert.alert("Thông báo","Hủy vé thành công")
                   navigation.navigate('MyTric')
                })
@@ -36,7 +36,7 @@ const Ticketinformation = ({ route, navigation }: any) => {
    return (
       <>
          <StatusBar translucent={true} backgroundColor={'transparent'} barStyle="dark-content"></StatusBar>
-         <View style={{ height: 42, backgroundColor: '#FF6600' }}></View>
+         <View style={{ height: 42, backgroundColor: '#642EFE' }}></View>
          <View style={{ backgroundColor: '#FF6600', justifyContent: "space-between", flexDirection: 'row', padding: 15 }}>
             <TouchableOpacity onPress={() => navigation.goBack()}><IconIonicons name="chevron-back" size={28} color="white" /></TouchableOpacity>
             <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 20 }}>Thông tin vé</Text>

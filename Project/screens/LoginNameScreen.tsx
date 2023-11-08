@@ -21,7 +21,7 @@ const LoginNameScreen = ({ route }: any) => {
                 Email: '',
                 TrangThai:1
             }
-            axios.post('http://192.168.2.97:3000/hanhkhach/', formlogin).then((response) => {
+            axios.post('http://192.168.2.98:3000/hanhkhach/', formlogin).then((response) => {
                 let Data = {
                     id: response.data.insertId,
                     TenHanhKhach: isName,

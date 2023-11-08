@@ -11,7 +11,7 @@ const MyTripScreen = ({ route, navigation }: any) => {
     const [check, setcheck] = useState(1)
 
     if (route.params == undefined) {
-        axios.get('http://192.168.2.97:3000/vexe/khachhang/' + IsNote.id + '/1').then((response) => {
+        axios.get('http://192.168.2.98:3000/vexe/khachhang/' + IsNote.id + '/1').then((response) => {
             SetVeXeHienTai(response.data)
         });
     }
@@ -22,11 +22,11 @@ const MyTripScreen = ({ route, navigation }: any) => {
 
     const onPress = async (id: any) => {
         if(id == 2){
-            axios.get('http://192.168.2.97:3000/vexe/khachhang/' + IsNote.id + '/2').then((response) => {
+            axios.get('http://192.168.2.98:3000/vexe/khachhang/' + IsNote.id + '/2').then((response) => {
             setVeXeDaDi(response.data)
         });
         }else{
-            axios.get('http://192.168.2.97:3000/vexe/khachhang/' + IsNote.id + '/3').then((response) => {
+            axios.get('http://192.168.2.98:3000/vexe/khachhang/' + IsNote.id + '/3').then((response) => {
                 setVeXeDaHuy(response.data)
             });
         }
@@ -145,7 +145,7 @@ const MyTripScreen = ({ route, navigation }: any) => {
                                                 <Text style={{ color: '#3b3938', fontSize: 17 }}>Ngày</Text>
                                                 <Text style={{ color: 'black', fontSize: 18, paddingBottom: 8 }}>{item.NgayDi}</Text>
                                                 <Text style={{ color: '#3b3938', fontSize: 17 }}>Trạng thái</Text>
-                                                <Text style={{ color: 'black', fontSize: 18 }}>Đã huy vé</Text>
+                                                <Text style={{ color: 'black', fontSize: 18 }}>Đã hủy vé</Text>
                                             </View>
                                             <View style={{ width: 1, height: '100%', backgroundColor: 'white' }}></View>
                                             <View style={{ width: '64%', marginLeft: 10 }}>
@@ -176,7 +176,7 @@ const MyTripScreen = ({ route, navigation }: any) => {
 const styles = StyleSheet.create({
     header: {
         width: '100%',
-        backgroundColor: '#FF6600',
+        backgroundColor: '#642EFE',
         height: 100
     },
     txtHeader: {
@@ -191,7 +191,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         padding: 6,
         borderRadius: 20,
-        backgroundColor: '#FFCCCC',
+        backgroundColor: '#642EFE',
         marginTop: 10,
         elevation: 4,
         shadowColor: '#555555',

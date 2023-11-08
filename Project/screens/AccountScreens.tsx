@@ -29,7 +29,7 @@ const AccountScreen = ({ navigation }: any) => {
                 <TouchableOpacity style={styles.menu}>
                     <View style={{ flexDirection: 'row', paddingVertical: 15 }}>
                         <Icon name="info" size={22} color="red" />
-                        <Text style={{ fontSize: 18, paddingLeft: 13 }}>Giới thiệu nhà xe</Text>
+                        <Text style={{ fontSize: 18, paddingLeft: 13 }}>Giới thiệu</Text>
                     </View>
                     <View>
                         <Icon name="chevron-right" size={23} color="black" />
@@ -54,7 +54,20 @@ const AccountScreen = ({ navigation }: any) => {
                     </View>
                 </TouchableOpacity>
 
-               
+                {/* <View style={{ padding: 25 }}>
+                    <Text style={{ paddingBottom: 5, color: 'black', fontSize: 19 }}>Công ty TNHH vận tải và du lịch An Phú Qúy</Text>
+                    <Text style={{ fontSize: 16 }}>Người đại diện: Lê Dũng Thái</Text>
+                    <Text style={{ fontSize: 16 }}>Số ĐKKD 2901884414 do Sở KHĐT Nghệ An</Text>
+                    <Text style={{ fontSize: 16 }}>cấp ngày 25/12/2017</Text>
+                    <Text style={{ fontSize: 16, marginTop: 6 }}>Địa chỉ : Thanh Chương, Nghệ An, Việt Nam</Text>
+                    <Text style={{ fontSize: 16 , marginTop: 6}}>Sđt : 099998888</Text>
+                    <Text style={{ fontSize: 16 , marginTop: 6}}>Sđt : 099778823</Text>
+                    <Text style={{ fontSize: 16 , marginTop: 6}}>Email : xekhachanphuquy@gmail.com</Text>
+                    <Text style={{ fontSize: 16 }}>Web : htt://xekhachanphuquy.vn</Text>
+                    <Text style={{ fontSize: 16 }}>Fb : https://www.facebook.com/xekhachanphuquy</Text>
+                    <Text style={{ fontSize: 16 }}>Zalo : https://zalo.me/099998888</Text>
+
+                </View> */}
             </ScrollView>
 
 
@@ -68,7 +81,7 @@ const styles = StyleSheet.create({
         paddingTop:40,
         flexDirection: 'row',
         justifyContent: "space-between",
-        backgroundColor: '#FF6600',
+        backgroundColor: '#642EFE',
     },
     menu: {
         backgroundColor: '#EEEEEE',

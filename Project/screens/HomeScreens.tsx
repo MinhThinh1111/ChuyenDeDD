@@ -70,7 +70,7 @@ const HomeScreen = ({ route, navigation }: any) => {
                 IdHuyenfrom
                  
             await AsyncStorage.setItem('idHuyen',datahuyen);
-            const res = await fetch('http://192.168.2.97:3000/lotrinh/search/'+idToAdderss+'/'+idFromAdderss);
+            const res = await fetch('http://192.168.2.98:3000/lotrinh/search/'+idToAdderss+'/'+idFromAdderss);
             const data = await res.json();
             navigation.navigate('TripList',{idLoTrinh:data.Id,NgayDi:date,toAdderss:toAdderss,fromAdderss:fromAdderss})
             } catch (err) {
@@ -87,11 +87,10 @@ const HomeScreen = ({ route, navigation }: any) => {
         <ScrollView>
             <StatusBar translucent={true} backgroundColor={'transparent'} barStyle="dark-content"></StatusBar>
             <View style={styles.banner}>
-                <Image style={styles.bannerImg} source={require("../assets/Images/banner2.jpg")} />
+                <Image style={styles.bannerImg} source={require("../assets/Images/banner1.jpg")} />
                 <View style={styles.bannerText}>
                     <Text style={styles.bannerText1}>Xin chào {IsNote.TenHanhKhach}</Text>
-                    <Text style={{ color: "black" }}>Bạn đã sẵn sàng cho chuyến </Text>
-                    <Text style={{ color: "black" }}>hành trình của riêng mình?</Text>
+                    <Text style={{ color: "black" }}>Chào mừng bạn đến với APP SPTRAVEL</Text>
                 </View>
             </View>
 
@@ -139,27 +138,27 @@ const HomeScreen = ({ route, navigation }: any) => {
 
                 <TouchableOpacity onPress={() => nextPage()} >
                     <View style={styles.BtnSearch}>
-                        <Text style={{ alignSelf: "center", color: "white", fontSize: 15 }}>Tìm chuyến đi</Text>
+                        <Text style={{ alignSelf: "center", color: "white", fontSize: 15 }}>Tìm chuyến</Text>
                     </View>
                 </TouchableOpacity>
             </View>
 
             <View style={{ marginTop: 190, padding: 25 }}>
-                <Text style={{ fontSize: 18, fontWeight: "bold", color: "black" }}>Tin tức</Text>
+                <Text style={{ fontSize: 18, fontWeight: "bold", color: "black" }}>DỊCH VỤ KHÁC</Text>
                 <ScrollView horizontal>
                     <View style={{ flexDirection: 'row', marginTop: 20 }}>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={() => navigation.navigate("VeMayBay")}>
                             <View style={styles.News}>
-                                <Image style={styles.ImageNews} source={require('../assets/Images/banner1.jpg')} />
-                                <Text style={styles.NameNews}>Hệ thống nhà xe Phương Trang</Text>
+                                <Image style={styles.ImageNews} source={require('../assets/Images/panner2.jpg')} />
+                                <Text style={styles.NameNews}>VÉ MÁY BAY</Text>
                             </View>
                         </TouchableOpacity>
                     </View>
-                    <View style={{ flexDirection: 'row', marginTop: 23 }}>
-                        <TouchableOpacity>
+                    <View style={{ flexDirection: 'row', marginTop: 20 }}>
+                        <TouchableOpacity >
                             <View style={styles.News}>
-                                <Image style={styles.ImageNews} source={require('../assets/Images/banner1.jpg')} />
-                                <Text style={styles.NameNews}>Hệ thống nhà xe Phương Trang</Text>
+                                <Image style={styles.ImageNews} source={require('../assets/Images/panner4.jpg')} />
+                                <Text style={styles.NameNews}>THUÊ XE</Text>
                             </View>
                         </TouchableOpacity>
                     </View>
@@ -234,14 +233,14 @@ const styles = StyleSheet.create({
         borderRadius: 15,
         elevation: 2,
         shadowColor: '#555555',
-        backgroundColor: '#ff6400',
+        backgroundColor: '#642EFE',
         padding: 15,
     },
     News: {
-        backgroundColor: 'white',
+        backgroundColor: '#58ACFA',
         borderRadius: 15,
         width: 300,
-        height: 320,
+        height: 300,
         overflow: 'hidden',
         marginRight: 12,
         elevation: 2,
@@ -249,14 +248,14 @@ const styles = StyleSheet.create({
     },
     ImageNews: {
         width: '100%',
-        height: 260,
+        height: 250,
     },
     NameNews: {
         fontWeight: 'bold',
         fontSize: 18,
         overflow: 'hidden',
         padding: 8,
-        color: 'black',
+        color: '#fff',
         textAlign:'center'
     },
     Icon: {

@@ -14,8 +14,7 @@ const ChooseSeatScreen = ({ route, navigation }: any) => {
 
     const GhetGheXeByChuyenDi = async () => {
         try {
-            // const res = await fetch('http://192.168.2.97:3000/chongoi/search/' + Id_ChuyenDi);
-            const res = await fetch('http://192.168.2.97:3000/chongoi/search/' + Id_ChuyenDi);
+            const res = await fetch('http://192.168.2.98:3000/chongoi/search/' + Id_ChuyenDi);
             const data = await res.json();
             if (data != null) {
                 for (let index = 0; index < data.length; index++) {
@@ -26,8 +25,7 @@ const ChooseSeatScreen = ({ route, navigation }: any) => {
             console.log(err);
         }
         try {
-            const res = await fetch('http://192.168.2.97:3000/ghexe/search/' + Id_Xe + '/1');
-            // const res = await fetch('http://192.168.2.97:3000/ghexe/search/' + Id_Xe + '/1');
+            const res = await fetch('http://192.168.2.98:3000/ghexe/search/' + Id_Xe + '/1');
             const data = await res.json();
 
             if (data != null) {
@@ -48,8 +46,7 @@ const ChooseSeatScreen = ({ route, navigation }: any) => {
             console.log(err);
         }
         try {
-            const res = await fetch('http://192.168.2.97:3000/ghexe/search/' + Id_Xe + '/2');
-            // const res = await fetch('http://192.168.2.97:3000/ghexe/search/' + Id_Xe + '/2');
+            const res = await fetch('http://192.168.2.98:3000/ghexe/search/' + Id_Xe + '/2');
             const data = await res.json();
             if (data != null) {
                 const List: any = [];
@@ -148,7 +145,7 @@ const ChooseSeatScreen = ({ route, navigation }: any) => {
     return (
         <>
             <StatusBar translucent={true} backgroundColor={'transparent'} barStyle="dark-content"></StatusBar>
-            <View style={{ height: 42, backgroundColor: '#FF6600' }}></View>
+            <View style={{ height: 42, backgroundColor: '#642EFE' }}></View>
             <View style={{ backgroundColor: '#FFFFFF', justifyContent: "space-between", flexDirection: 'row', padding: 15 }}>
                 <TouchableOpacity onPress={() => navigation.goBack()}><IconIonicons name="chevron-back" size={28} color="black" /></TouchableOpacity>
                 <Text style={{ color: 'black', fontWeight: 'bold', fontSize: 20 }}>Chọn ghế</Text>
@@ -160,17 +157,17 @@ const ChooseSeatScreen = ({ route, navigation }: any) => {
                 <View style={{ width: '50%' }}>
                     <View style={{ flexDirection: 'row', alignItems: 'center', paddingVertical: 15 }}>
                         <IconEntypo name="squared-cross" size={38} color="#DDDDDD" />
-                        <Text>   Đã bán</Text>
+                        <Text>Đã bán</Text>
                     </View>
                     <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                        <IconIonicons name="square-outline" size={38} color="#00CCFF" />
-                        <Text>   Đang chọn</Text>
+                        <IconIonicons name="square-outline" size={38} color="#0101DF" />
+                        <Text>Đang chọn</Text>
                     </View>
                 </View>
                 <View>
                     <View style={{ flexDirection: 'row', alignItems: 'center', paddingVertical: 15 }}>
                         <IconIonicons name="square-outline" size={38} color="black" />
-                        <Text>   Chưa đặt</Text>
+                        <Text>Chưa đặt</Text>
                     </View>
                 </View>
             </View>
@@ -194,7 +191,7 @@ const ChooseSeatScreen = ({ route, navigation }: any) => {
                                             : item.TrangThai == '2' ?
                                                 <Text style={{ paddingHorizontal: 34 }}><IconEntypo name="squared-cross" size={(item.SoGhe == 20) ? 60 : 50} color="#DDDDDD" /></Text>
                                                 :
-                                                <TouchableOpacity style={{ paddingHorizontal: 35 }} onPress={() => Chonchongoi(item.Index, 1)}><IconIonicons name="square-outline" size={(item.SoGhe == 20) ? 60 : 50} color="#00CCFF" /></TouchableOpacity>
+                                                <TouchableOpacity style={{ paddingHorizontal: 35 }} onPress={() => Chonchongoi(item.Index, 1)}><IconIonicons name="square-outline" size={(item.SoGhe == 20) ? 60 : 50} color="#0101DF" /></TouchableOpacity>
                                         }
                                     </View>
                                 })}
@@ -221,8 +218,8 @@ const ChooseSeatScreen = ({ route, navigation }: any) => {
                     {soLuong > 0 &&
                         <View style={{ marginTop: 20, justifyContent: 'space-between', flexDirection: 'row', padding: 10 }}>
                             <View><Text style={{ color: 'black', fontSize: 18 }}>Số Lượng : {soLuong} chố</Text>
-                                <Text style={{ color: 'black', fontSize: 20, fontWeight: 'bold' }}>{giaTien * soLuong} VND</Text></View>
-                            <TouchableOpacity onPress={() => nextPage()} style={{ backgroundColor: 'red', height: 40, alignItems: 'center', borderRadius: 2 }}><Text style={{ color: 'white', paddingTop: 8, fontSize: 15, paddingHorizontal: 15 }}>Tiếp Tục</Text></TouchableOpacity></View>
+                                <Text style={{ color: 'black', fontSize: 20, fontWeight: 'bold' }}>{giaTien * soLuong}VND</Text></View>
+                            <TouchableOpacity onPress={() => nextPage()} style={{ backgroundColor: '#642EFE', height: 40, alignItems: 'center', borderRadius: 10 }}><Text style={{ color: 'white', paddingTop: 8, fontSize: 15, paddingHorizontal: 15 }}>Tiếp Tục</Text></TouchableOpacity></View>
                     }
                 </View>
             </ScrollView>

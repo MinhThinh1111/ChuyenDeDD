@@ -11,7 +11,7 @@ const TripListScreens = ({ route }: any) => {
     let i = '2023-11-3'
     const getChuyenDiByIdLoTrinhNgayDi = async () => {
         try {
-            const res = await fetch('http://192.168.2.97:3000/chuyendi/search/' +idLoTrinh+ '/' + NgayDi);
+            const res = await fetch('http://192.168.2.98:3000/chuyendi/search/' +idLoTrinh+ '/' + NgayDi);
             const data = await res.json();
             setchuyenDi(data)
         } catch (err) {
@@ -29,32 +29,31 @@ const TripListScreens = ({ route }: any) => {
         <>
             <View style={styles.header}>
                 <StatusBar translucent={true} backgroundColor={'transparent'} barStyle="dark-content"></StatusBar>
-                <Image style={{ width: '100%', height: 200 }} source={require('../assets/Images/Ticker.jpg')}></Image>
+                <Image style={{ width: '100%', height: 200 }} source={require('../assets/Images/banner1.jpg')}></Image>
                 <View style={styles.headerName}>
                     <TouchableOpacity onPress={() => navigation.goBack()} style={{ marginTop: -10 }} ><Icon style={{ backgroundColor: 'white', padding: 12, borderRadius: 10 }} name="arrow-back" size={20} color="red" /></TouchableOpacity>
-                    <Text style={{ fontSize: 20, color: 'white' }}>{toAdderss}</Text>
-                    <Icon name="arrow-forward" size={26} color="white" />
-                    <Text style={{ fontSize: 20, color: 'white' }}>{fromAdderss}</Text>
+                    <Text style={{ fontSize: 20, color: 'black', fontWeight:'bold'}}>{toAdderss}</Text>
+                    <Icon name="arrow-forward" size={26} color="black" />
+                    <Text style={{ fontSize: 20, color: 'black', fontWeight:'bold' }}>{fromAdderss}</Text>
                 </View>
             </View>
             <View style={styles.date}>
-                <TouchableOpacity>
+                {/* <TouchableOpacity>
                     <IconFontisto name="date" size={20} color='white'></IconFontisto>
-                </TouchableOpacity>
+                </TouchableOpacity> */}
                 <View>
-                    <Text style={{ color: 'white' }}>Khởi hành</Text>
-                    <Text style={{ color: 'white', fontSize: 17 }}> {NgayDi}</Text>
+                    <Text style={{ color: 'white', fontSize: 17, textAlign:'center' }}>Danh sách chuyến xe</Text>
+                    <Text style={{ color: 'white', fontSize: 17, textAlign:'center' }}> {NgayDi}</Text>
                 </View>
-                <IconFontisto name="nav-icon-list-a" size={20} color='white'></IconFontisto>
+                {/* <IconFontisto name="nav-icon-list-a" size={20} color='white'></IconFontisto> */}
             </View>
 
             <View style={{ backgroundColor: '#DDDDDD', flex: 1, height: '100%', borderTopRightRadius: 20, top: -18, borderTopLeftRadius: 20 }}>
-                //Khi không có chuyến xe
                 {chuyenDi.length == 0 && <View>
-                    <Text style={{ marginTop: 90, alignSelf: 'center', fontSize: 24, color: 'black', fontWeight: 'bold' }}>Không tìm thấy chuyến xe </Text>
+                    {/* <Text style={{ marginTop: 90, alignSelf: 'center', fontSize: 24, color: 'black', fontWeight: 'bold' }}>Không tìm thấy chuyến xe </Text>
                     <Text style={{ alignSelf: 'center', fontSize: 16, color: 'black', }}>các chuyến xe trong ngày tạm hết vé.</Text>
                     <Text style={{ alignSelf: 'center', fontSize: 16, color: 'black', }}>quý khách vui lòng thử lại sau hoặc chọn </Text>
-                    <Text style={{ alignSelf: 'center', fontSize: 16, color: 'black', }}>ngày khởi hành khác</Text>
+                    <Text style={{ alignSelf: 'center', fontSize: 16, color: 'black', }}>ngày khởi hành khác</Text> */}
                     <Waiting></Waiting>
                 </View>}
 
@@ -79,10 +78,10 @@ const TripListScreens = ({ route }: any) => {
                                 </View>
                                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingVertical: 10 }}>
                                     <Text style={{ fontSize: 15, color: 'black', width: '50%' }}>{item.Diem_Bat_Dau}</Text>
-                                    <Text style={{ fontSize: 15, color: 'black', width: '50%' }}>{item.Diem_Ket_Thuc}</Text>
+                                    <Text style={{ fontSize: 15, color: 'black', width: '50%',marginLeft:80 }}>{item.Diem_Ket_Thuc}</Text>
                                 </View>
                                 <View style={{ height: 1, backgroundColor: '#C0C0C0' }}></View>
-                                <Text style={{ fontSize: 19, color: 'black', paddingTop: 12, paddingLeft: 180, fontWeight: 'bold' }}> {item.Gia_Tien} VND</Text>
+                                <Text style={{ fontSize: 19, color: 'black', paddingTop: 12, paddingLeft: 180, fontWeight: 'bold' }}>Giá: {item.Gia_Tien} VND</Text>
                             </View>
                         </TouchableOpacity>
                     }
@@ -108,10 +107,11 @@ const styles = StyleSheet.create({
 
     },
     date: {
-        flexDirection: 'row',
+        
+        alignItems:'center',
         justifyContent: 'space-between',
         padding: 20,
-        backgroundColor: '#FF6600',
+        backgroundColor: '#642EFE',
         borderTopEndRadius: 25,
         borderTopStartRadius: 25,
         height: '12%'

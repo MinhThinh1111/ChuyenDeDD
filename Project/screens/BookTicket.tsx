@@ -26,8 +26,7 @@ const BookTicket = ({ route, navigation }: any) => {
         const data = await AsyncStorage.getItem('idHuyen');
         let id = data?.split(',');
         try {
-            // const res = await fetch('http://192.168.2.97:3000/diemxe/huyen/' + id[0]);
-            const res = await fetch('http://192.168.2.97:3000/diemxe/huyen/' + id[0]);
+            const res = await fetch('http://192.168.2.98:3000/diemxe/huyen/' + id[0]);
             const data = await res.json();
             setBatDau(data);
         } catch (err) {
@@ -35,8 +34,7 @@ const BookTicket = ({ route, navigation }: any) => {
         }
         try {
             
-            // const res = await fetch('http://172.16.0.120:3000/diemxe/huyen/' + id[1]);
-            const res = await fetch('http://192.168.2.97:3000/diemxe/huyen/' + id[1]);
+            const res = await fetch('http://192.168.2.98:3000/diemxe/huyen/' + id[1]);
             const data = await res.json();
             setBatCuoi(data);
         } catch (err) {
@@ -62,8 +60,8 @@ const BookTicket = ({ route, navigation }: any) => {
         try {
 
             for (let index = 0; index < data.length; index++) {
-                // axios.get('http://192.168.2.97:3000/chongoi/check/' + Id_ChuyenDi + '/' + data[index].Id).then((response) => {
-                axios.get('http://192.168.2.97:3000/chongoi/check/' + Id_ChuyenDi + '/' + data[index].Id).then((response) => {
+                // axios.get('http://192.168.2.98:3000/chongoi/check/' + Id_ChuyenDi + '/' + data[index].Id).then((response) => {
+                axios.get('http://192.168.2.98:3000/chongoi/check/' + Id_ChuyenDi + '/' + data[index].Id).then((response) => {
                     if (response.data.Id != undefined) {
                         Alert.alert('Thông báo', 'Lỗi hệ thống khi đặt vé')
                         navigation.navigate('Home')
@@ -71,15 +69,15 @@ const BookTicket = ({ route, navigation }: any) => {
                 })  
             }
 
-            axios.get('http://192.168.2.97:3000/chuyendi/' + Id_ChuyenDi).then((response) => {
-                // axios.get('http://192.168.2.97:3000/chuyendi/' + Id_ChuyenDi).then((response) => {
+            axios.get('http://192.168.2.98:3000/chuyendi/' + Id_ChuyenDi).then((response) => {
+                // axios.get('http://192.168.2.98:3000/chuyendi/' + Id_ChuyenDi).then((response) => {
                 let updatechuyendi = {
                     Id: response.data.Id,
                     SoGheTrong: response.data.SoGheTrong - data.length
                 }
-                // axios.put('http://192.168.2.97:3000/chuyendi/updateSoGheTrong', updatechuyendi).then((response) => {
+                // axios.put('http://192.168.2.98:3000/chuyendi/updateSoGheTrong', updatechuyendi).then((response) => {
                 // })
-                axios.put('http://192.168.2.97:3000/chuyendi/updateSoGheTrong', updatechuyendi).then((response) => {
+                axios.put('http://192.168.2.98:3000/chuyendi/updateSoGheTrong', updatechuyendi).then((response) => {
                 })
             });
 
@@ -94,8 +92,8 @@ const BookTicket = ({ route, navigation }: any) => {
                 thanhtoan: 1
 
             }
-            // axios.post('http://192.168.2.97:3000/vexe/', formVeXe).then((response) => {
-            axios.post('http://192.168.2.97:3000/vexe/', formVeXe).then((response) => {
+            // axios.post('http://192.168.2.98:3000/vexe/', formVeXe).then((response) => {
+            axios.post('http://192.168.2.98:3000/vexe/', formVeXe).then((response) => {
                 for (let index = 0; index < data.length; index++) {
                     let formChongoi = {
                         Id_VeXe: response.data.insertId,
@@ -104,20 +102,20 @@ const BookTicket = ({ route, navigation }: any) => {
                         Id_ChuyenDi: Id_ChuyenDi,
 
                     }
-                    // axios.post('http://192.168.2.97:3000/chongoi/', formChongoi).then((response) => {
+                    // axios.post('http://192.168.2.98:3000/chongoi/', formChongoi).then((response) => {
                     // });
-                    axios.post('http://192.168.2.97:3000/chongoi/', formChongoi).then((response) => {
+                    axios.post('http://192.168.2.98:3000/chongoi/', formChongoi).then((response) => {
                     });
                 }
 
-                axios.get('http://192.168.2.97:3000/chuyendi/' + Id_ChuyenDi).then((response) => {
-                    // axios.get('http://192.168.2.97:3000/chuyendi/' + Id_ChuyenDi).then((response) => {
+                axios.get('http://192.168.2.98:3000/chuyendi/' + Id_ChuyenDi).then((response) => {
+                    // axios.get('http://192.168.2.98:3000/chuyendi/' + Id_ChuyenDi).then((response) => {
                     let updatechuyendi = {
                         Id: response.data.Id,
                         SoGheTrong: response.data.SoGheTrong - data.length
                     }
-                    axios.put('http://192.168.2.97:3000/chuyendi/updateSoGheTrong', updatechuyendi).then((response) => {    
-                        // axios.put('http://192.168.2.97:3000/chuyendi/updateSoGheTrong', updatechuyendi).then((response) => {
+                    axios.put('http://192.168.2.98:3000/chuyendi/updateSoGheTrong', updatechuyendi).then((response) => {    
+                        // axios.put('http://192.168.2.98:3000/chuyendi/updateSoGheTrong', updatechuyendi).then((response) => {
                         Alert.alert('Thông báo', 'Đặt Vé Thành Công')
                         navigation.navigate('MyTric')
                     })
@@ -141,17 +139,17 @@ const BookTicket = ({ route, navigation }: any) => {
                 <Text style={{ color: 'black', fontWeight: 'bold', fontSize: 20 }}>Chọn điểm đón và trả</Text>
                 <Text>      </Text>
             </View>
-            <View style={{ height: 1, backgroundColor: '#FF6600' }}></View>
+            <View style={{ height: 1, backgroundColor: '#642EFE' }}></View>
             <View style={{ padding: 15 }}>
                 <TouchableOpacity onPress={() => setDonTra(1)}>
                     <View style={{ width: '100%', height: 100, borderRadius: 12, borderWidth: 1, borderColor: 'red' }}>
-                        <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#FF6600', paddingTop: 15, paddingLeft: 10 }}>Điểm đón</Text>
+                        <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#642EFE', paddingTop: 15, paddingLeft: 10 }}>Điểm đón</Text>
                         <Text style={{ fontSize: 16, color: 'black', paddingLeft: 10 }}>{DiemDi}</Text>
                     </View>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => setDonTra(2)}>
                     <View style={{ width: '100%', height: 100, borderRadius: 12, borderWidth: 1, borderColor: 'red', marginTop: 15 }}>
-                        <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#FF6600', paddingTop: 15, paddingLeft: 10 }}>Điểm trả</Text>
+                        <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#642EFE', paddingTop: 15, paddingLeft: 10 }}>Điểm trả</Text>
                         <Text style={{ fontSize: 16, color: 'black', paddingLeft: 10 }}>{DiemTra}</Text>
                     </View>
                 </TouchableOpacity>
@@ -219,12 +217,12 @@ const BookTicket = ({ route, navigation }: any) => {
             }
             <View style={{ position: 'absolute', bottom: 5, width: '100%' }}>
                 {DiemDi == '' || DiemTra == '' ?
-                    <TouchableOpacity style={{ width: '100%', height: 40,marginBottom:15, backgroundColor: '#93969e', borderRadius: 12, alignItems: 'center', alignSelf: 'center' }}>
-                        <Text style={{ color: 'white', padding: 10, fontSize: 15 }}>Đặt vé</Text>
+                    <TouchableOpacity style={{ width: '100%', height: 50,marginBottom:15, backgroundColor: '#642EFE', borderRadius: 12, alignItems: 'center', alignSelf: 'center' }}>
+                        <Text style={{ color: 'white', padding: 10, fontSize: 20 }}>Đặt vé</Text>
                     </TouchableOpacity>
                     :
-                    <TouchableOpacity onPress={() => datvexe()} style={{ width: '100%', height: 40,marginBottom:15, backgroundColor: '#FF6600', borderRadius: 12, alignItems: 'center', alignSelf: 'center' }}>
-                        <Text style={{ color: 'white', padding: 10, fontSize: 15 }}>Đặt vé</Text>
+                    <TouchableOpacity onPress={() => datvexe()} style={{ width: '100%', height: 50,marginBottom:15, backgroundColor: '#642EFE', borderRadius: 12, alignItems: 'center', alignSelf: 'center' }}>
+                        <Text style={{ color: 'white', padding: 10, fontSize: 20 }}>Đặt vé</Text>
                     </TouchableOpacity>
                 }
             </View>

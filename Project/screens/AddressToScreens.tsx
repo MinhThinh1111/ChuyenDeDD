@@ -10,8 +10,8 @@ const AddressToScreens = ({ route, navigation }: any) => {
 
     const getTinh = async () => {
         try {
-            // const res = await fetch('http://192.168.2.97:3000/tinh');
-            const res = await fetch('http://192.168.2.97:3000/tinh');
+            // const res = await fetch('http://192.168.2.98:3000/tinh');
+            const res = await fetch('http://192.168.2.98:3000/tinh');
             const data = await res.json();
             setListTinh(data);
         } catch (err) {
@@ -21,8 +21,8 @@ const AddressToScreens = ({ route, navigation }: any) => {
 
     const getHuyenXa = async (id: any) => {
         try {
-            // const res = await fetch('http://192.168.2.97:3000/quanhuyen/IdTinh/'+ id);
-            const res = await fetch('http://192.168.2.97:3000/quanhuyen/IdTinh/'+ id);
+            // const res = await fetch('http://192.168.2.98:3000/quanhuyen/IdTinh/'+ id);
+            const res = await fetch('http://192.168.2.98:3000/quanhuyen/IdTinh/'+ id);
             const data = await res.json();
             setListHuyen(data);
         } catch (err) {
@@ -51,7 +51,7 @@ const AddressToScreens = ({ route, navigation }: any) => {
                 <TouchableOpacity style={styles.Icons} onPress={() => navigation.goBack()}>
                     <Icon style={styles.Icon} name="close" size={20} color="red" />
                 </TouchableOpacity>
-                <View style={{ height: 159, width: "100%", backgroundColor: '#FF5722', }}>
+                <View style={{ height: 159, width: "100%", backgroundColor: '#642EFE', }}>
                     <Text style={{ padding: 14, backgroundColor: 'white', marginTop: 43, marginLeft: 23, width: "90%", borderRadius: 12, fontSize: 16 }}> Tỉnh / Thành, Quận / Huyện </Text>
                 </View>
             </View>
@@ -91,7 +91,7 @@ const AddressToScreens = ({ route, navigation }: any) => {
 const styles = StyleSheet.create({
     datePicker: {
         marginTop: 23,
-        backgroundColor: "#f28780",
+        backgroundColor: "#642EFE",
         paddingHorizontal: 16,
         paddingVertical: 60,
         fontSize: 29,
