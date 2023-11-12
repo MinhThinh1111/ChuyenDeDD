@@ -4,27 +4,41 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import IconFontisto from "react-native-vector-icons/Fontisto";
 import { useNavigation } from '@react-navigation/native';
 import Waiting from "./Waiting";
+
+// Component TripListScreens nhận các tham số thông qua route
 const TripListScreens = ({ route }: any) => {
     const navigation = useNavigation()
+
+    // Lấy thông tin từ route.params
     const { NgayDi, idLoTrinh, toAdderss, fromAdderss } = route.params;
+
+    // State chứa danh sách chuyến đi
     const [chuyenDi, setchuyenDi] = useState([]);
-    let i = '2023-11-3'
+
+    // Ngày mặc định để test
+    let i = '2023-11-3';
+
+    // Hàm gọi API để lấy danh sách chuyến đi theo idLoTrinh và NgayDi
     const getChuyenDiByIdLoTrinhNgayDi = async () => {
         try {
-            const res = await fetch('http://192.168.2.98:3000/chuyendi/search/' +idLoTrinh+ '/' + NgayDi);
+            const res = await fetch('http://192.168.1.2:3000/chuyendi/search/' + idLoTrinh + '/' + NgayDi);
             const data = await res.json();
-            setchuyenDi(data)
+            setchuyenDi(data);
         } catch (err) {
             console.log(err);
         }
     }
 
-    const nextPage = (id:any,idxe:any,giaTien:any) =>{
-        navigation.navigate('ChooseSeat',{Id_ChuyenDi:id,Id_Xe:idxe,giaTien:giaTien})
+    // Hàm chuyển hướng sang màn hình chọn ghế khi người dùng nhấn vào một chuyến đi
+    const nextPage = (id: any, idxe: any, giaTien: any) => {
+        navigation.navigate('ChooseSeat', { Id_ChuyenDi: id, Id_Xe: idxe, giaTien: giaTien })
     }
+
+    // Sử dụng useEffect để gọi hàm lấy danh sách chuyến đi khi component được render
     useEffect(() => {
         getChuyenDiByIdLoTrinhNgayDi();
     }, [])
+    
     return (
         <>
             <View style={styles.header}>

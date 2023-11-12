@@ -5,10 +5,11 @@ import Icon from 'react-native-vector-icons/Feather';
 import { useNotes } from "../ConText/MyNote";
 const AccountScreen = ({ navigation }: any) => {
     const {IsNote,SetNote,getNote}:any = useNotes()
+    // Hàm login để xử lý khi người dùng đăng xuất
     const login = ()=>{
-        SetNote({})
+        SetNote({}) // clear thông tin người dùng
         AsyncStorage.clear()
-        navigation.replace('LoginPhone')
+        navigation.replace('LoginPhone') // chuyển về màn hình login
     }
     return (
         <>

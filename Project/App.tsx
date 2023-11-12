@@ -12,17 +12,22 @@ import ChooseSeatScreen from "./screens/ChooseSeatScreen ";
 import BookTicket from "./screens/BookTicket";
 import MyNote from "./ConText/MyNote";
 import LoginPhoneScreen from "./screens/LoginPhoneScreen";
-import LoginNameScreen from "./screens/LoginNameScreen";
+import RegisterScreen from "./screens/RegisterScreen";
 import Ticketinformation from "./screens/TicketInformation";
+
+// Tạo một Stack Navigator sử dụng createNativeStackNavigator từ thư viện @react-navigation/native-stack
 const Stack = createNativeStackNavigator();
+
+// Định nghĩa component chính của ứng dụng
 const App = () => {
   return (
     <>
       <NavigationContainer>
+        {/* Sử dụng MyNote, một Context Provider được cung cấp từ file ./ConText/MyNote */}
         <MyNote>
           <Stack.Navigator screenOptions={{ headerShown: false }}>
             <Stack.Screen name="LoginPhone" component={LoginPhoneScreen}></Stack.Screen>
-            <Stack.Screen name="LoginName" component={LoginNameScreen}></Stack.Screen>
+            <Stack.Screen name="LoginName" component={RegisterScreen}></Stack.Screen>
             <Stack.Screen name="App" component={TabNavigator}></Stack.Screen>
             <Stack.Screen name="AddresTo" component={AddressToScreens}></Stack.Screen>
             <Stack.Screen name="Date" component={DateScreens}></Stack.Screen>
@@ -36,6 +41,7 @@ const App = () => {
     </>
   )
 }
+
 const styles = StyleSheet.create({
 })
 

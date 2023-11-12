@@ -2,16 +2,19 @@ import React, { useState, useEffect } from "react";
 import { Image, StatusBar, StyleSheet, Text, TextInput, TouchableOpacity, View, FlatList } from "react-native";
 import Icon from 'react-native-vector-icons/EvilIcons';
 
+// Component xử lý chọn địa chỉ từ màn hình đến (to) hoặc từ (from)
 const AddressToScreens = ({ route, navigation }: any) => {
 
-    const [listTinh, setListTinh] = useState([])
+    // State để lưu danh sách tỉnh/thành phố và quận/huyện
+    const [listTinh, setListTinh] = useState([]);
     const [listHuyen, setListHuyen] = useState([]);
     const { address } = route.params;
 
+    // Hàm lấy danh sách tỉnh/thành phố từ API
     const getTinh = async () => {
         try {
-            // const res = await fetch('http://192.168.2.98:3000/tinh');
-            const res = await fetch('http://192.168.2.98:3000/tinh');
+            // const res = await fetch('http://192.168.1.2:3000/tinh');
+            const res = await fetch('http://192.168.1.2:3000/tinh');
             const data = await res.json();
             setListTinh(data);
         } catch (err) {
@@ -19,10 +22,11 @@ const AddressToScreens = ({ route, navigation }: any) => {
         }
     }
 
+    // Hàm lấy danh sách quận/huyện dựa trên ID tỉnh/thành phố từ API
     const getHuyenXa = async (id: any) => {
         try {
-            // const res = await fetch('http://192.168.2.98:3000/quanhuyen/IdTinh/'+ id);
-            const res = await fetch('http://192.168.2.98:3000/quanhuyen/IdTinh/'+ id);
+            // const res = await fetch('http://192.168.1.2:3000/quanhuyen/IdTinh/'+ id);
+            const res = await fetch('http://192.168.1.2:3000/quanhuyen/IdTinh/'+ id);
             const data = await res.json();
             setListHuyen(data);
         } catch (err) {
@@ -30,14 +34,16 @@ const AddressToScreens = ({ route, navigation }: any) => {
         }
     }
 
-    const getAdderesNavigate = async (Id: any, Ten: any,Id_Huyen: any) => {
+    // Hàm xử lý khi chọn địa chỉ và chuyển về màn hình chính
+    const getAdderesNavigate = async (Id: any, Ten: any, Id_Huyen: any) => {
         if (address == 'to') {
-            navigation.navigate('Home', { Idadderss: Id, Tenadderss: Ten, checkAdders: 'to', Id_Huyen: Id_Huyen});
+            navigation.navigate('Home', { Idadderss: Id, Tenadderss: Ten, checkAdders: 'to', Id_Huyen: Id_Huyen });
         } else {
             navigation.navigate('Home', { Idadderss: Id, Tenadderss: Ten, checkAdders: 'from', Id_Huyen: Id_Huyen });
         }
     }
 
+    // Sử dụng useEffect để gọi hàm lấy danh sách tỉnh khi component được render
     useEffect(() => {
         getTinh();
     }, [])
